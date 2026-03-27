@@ -14,12 +14,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20' # UPDATED: Moved from 18 to 20
 
       - name: Install and Build
-        # This tells the runner to look inside the folder where your package.json actually lives
         working-directory: ./tailwind-landing-page-template
         run: |
+          # Clean install to avoid the "Native Binding" error
+          rm -rf node_modules package-lock.json
           npm install
           npm run build
 
