@@ -2,7 +2,7 @@ name: Deploy to Azure
 
 on:
   push:
-    branches: [ main ] # Ensure this matches your branch name
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
@@ -17,8 +17,9 @@ jobs:
           node-version: '18'
 
       - name: Install and Build
+        # This tells the runner to look inside the folder where your package.json actually lives
+        working-directory: ./tailwind-landing-page-template
         run: |
-          cd tailwind-landing-page-template
           npm install
           npm run build
 
